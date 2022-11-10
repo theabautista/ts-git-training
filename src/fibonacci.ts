@@ -13,21 +13,21 @@ export const computeFibonacciNumber = (position: number, isRecursive: boolean = 
         return computeNegativeFibonacci(position);
     }
 
-    let i = 1;
-    let j = 1;
-
-    if (notNullPosition <= 2) {
+    if (notNullPosition === 1 || notNullPosition === 2) {
         return 1;
     }
 
+    let smallFibonacciNumber = 1;
+    let largeFibonacciNumber = 1;
+
     let currentPosition = 2;
     while (currentPosition < notNullPosition) {
-        const temp = i;
-        i = j;
-        j += temp;
+        const nextFibonacciNumber = smallFibonacciNumber + largeFibonacciNumber;
+        smallFibonacciNumber = largeFibonacciNumber;
+        largeFibonacciNumber = nextFibonacciNumber;
         currentPosition++;
     }
-    return j;
+    return largeFibonacciNumber;
 };
 
 
